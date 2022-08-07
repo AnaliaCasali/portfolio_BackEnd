@@ -25,37 +25,33 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PersonaController {
     @Autowired iPersonaService iPersoServ;
-   
+   //    @ResponseBody
     @GetMapping("personas/traer")
     public List<Persona> getPersona(){
     return this.iPersoServ.getPersona();
     }
 
-    @PostMapping("personas/crear")  
+    @PostMapping("/personas/crear")  
     public String createPersona(@RequestBody Persona pers){
         iPersoServ.savePersona(pers);
         return "La persona se creo correctamente";
 
     }
     
-    @GetMapping("/ver/personas")
-    @ResponseBody
-    public List<Persona> getPersonas(){
-      return iPersoServ.getPersona();
-    }    
-    @DeleteMapping("/delete/{id}")   
+
+    @DeleteMapping("/personas/borrar/{id}")   
     public String deletePersona(@PathVariable Long id){
       iPersoServ.deletePersona(id);
       return "La persona se elimino correctamente";
     }
     
-    @PutMapping("/edit/persona/{id}")   
-    public void editPersona(@PathVariable Long id,
-                            @RequestParam String newNombre,
-                            @RequestParam String newApellido,
-                            @RequestParam String newImg,
-                            @RequestParam String newDni,
-                            @RequestParam String newTelefono
+    @PutMapping("/personas/editar/{id}")   
+    public Persona editPersona(@PathVariable Long id,
+                            @RequestParam("nombre") String newNombre,
+                            @RequestParam  ("apellido") String newApellido,
+                            @RequestParam ("img") String newImg,
+                            @RequestParam ("dni")  String newDni,
+                            @RequestParam ("telefono") String newTelefono
             ){
         Persona persona=this.iPersoServ.findPersona(id);
         persona.setApellido(newApellido);
@@ -64,6 +60,7 @@ public class PersonaController {
         persona.setImg(newImg);
         persona.setTelefono(newTelefono);
         iPersoServ.savePersona(persona);
+        return persona;
     }
     
     
