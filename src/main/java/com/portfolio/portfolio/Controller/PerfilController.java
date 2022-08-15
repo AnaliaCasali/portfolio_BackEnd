@@ -117,7 +117,7 @@ public class PerfilController {
             return new ResponseEntity(new Mensaje("No se encuentra el Id"), HttpStatus.NOT_FOUND);
         }
         perfilService.deletePerfil(id);
-        return new ResponseEntity(new Mensaje("Perfil Borrada"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Perfil Borrado"), HttpStatus.OK);
     }
 
 }
