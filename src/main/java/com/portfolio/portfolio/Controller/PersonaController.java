@@ -8,6 +8,8 @@ import com.portfolio.portfolio.Model.Persona;
 import com.portfolio.portfolio.Service.iPersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,14 +25,16 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Analia
  */
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class PersonaController {
     @Autowired iPersonaService iPersoServ;
    //    @ResponseBody
-    @GetMapping("personas/traer")
+    @GetMapping("/personas/traer")
     public List<Persona> getPersona(){
     return this.iPersoServ.getPersona();
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/personas/crear")  
     public String createPersona(@RequestBody Persona pers){
         iPersoServ.savePersona(pers);
@@ -38,13 +42,13 @@ public class PersonaController {
 
     }
     
-
+     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/personas/borrar/{id}")   
     public String deletePersona(@PathVariable Long id){
       iPersoServ.deletePersona(id);
       return "La persona se elimino correctamente";
     }
-    
+     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/personas/editar/{id}")   
     public Persona editPersona(@PathVariable Long id,
                             @RequestParam("nombre") String newNombre,
@@ -63,6 +67,11 @@ public class PersonaController {
         return persona;
     }
     
+    @GetMapping("/personas/traerperfil")
+    public Persona findPersona(){
+    return this.iPersoServ.findPersona((long) 1);
+    }
+
     
 
 
