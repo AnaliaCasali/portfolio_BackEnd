@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Analia
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://frontendportfolioanalia.web.app/")
 
 public class ExperienciaController {
 

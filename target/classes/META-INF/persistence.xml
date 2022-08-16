@@ -3,11 +3,13 @@
   <persistence-unit name="com.portfolio_portfolio_jar_0.0.1-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/portfolioAnalia?useSSL=false&amp;serverTimezone=UTC"/>
-      <property name="javax.persistence.jdbc.user" value="root"/>
+        <property name="javax.persistence.jdbc.url" value="jdbc:mysql://unqjxef51lbgksji:SlNvJ2VSSysBJhv1C6Zb@bkiwrkrdpmou2mqkj4oz-mysql.services.clever-cloud.com:3306/bkiwrkrdpmou2mqkj4oz"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://unqjxef51lbgksji:SlNvJ2VSSysBJhv1C6Zb@bkiwrkrdpmou2mqkj4oz-mysql.services.clever-cloud.com:3306/bkiwrkrdpmou2mqkj4oz"/>
+      <property name="javax.persistence.jdbc.user" value="unqjxef51lbgksji"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value=""/>
+      <property name="javax.persistence.jdbc.password" value="SlNvJ2VSSysBJhv1C6Zb"/>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
   </persistence-unit>
 </persistence>
+
